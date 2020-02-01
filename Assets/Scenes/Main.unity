@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &26072442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9064593306670822460, guid: 66f24ab2e1e359843abb75a7df189269,
+    type: 3}
+  m_PrefabInstance: {fileID: 487338756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &28557969 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 28557969, guid: ca26754305118944d888abe48e433984,
@@ -184,7 +190,7 @@ MonoBehaviour:
   - {fileID: 1428427404}
   - {fileID: 2073289088}
   gameController: {fileID: 1160890316}
-  myPlatform: {fileID: 0}
+  myPlatform: {fileID: 1231750036}
   myShip: {fileID: 0}
   itemFx: {fileID: 255912306521268364, guid: efacb52ee71009a4dab3b57f06881d3f, type: 3}
 --- !u!4 &62402570
@@ -5321,6 +5327,12 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &400080628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9064593306670822460, guid: 66f24ab2e1e359843abb75a7df189269,
+    type: 3}
+  m_PrefabInstance: {fileID: 1804467443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &433179477
 GameObject:
   m_ObjectHideFlags: 0
@@ -6944,6 +6956,12 @@ MonoBehaviour:
   playerColor: {r: 1, g: 0, b: 0, a: 0}
   bodyRenderer: {fileID: 2019648553}
   particles: {fileID: 0}
+--- !u!1 &1231750036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9064593306670822460, guid: 66f24ab2e1e359843abb75a7df189269,
+    type: 3}
+  m_PrefabInstance: {fileID: 232364834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1236969047
 GameObject:
   m_ObjectHideFlags: 0
@@ -11778,6 +11796,12 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1337282117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9064593306670822460, guid: 66f24ab2e1e359843abb75a7df189269,
+    type: 3}
+  m_PrefabInstance: {fileID: 798227831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1346150038
 GameObject:
   m_ObjectHideFlags: 0
@@ -12082,7 +12106,7 @@ MonoBehaviour:
   - {fileID: 62402567}
   - {fileID: 2073289088}
   gameController: {fileID: 1160890316}
-  myPlatform: {fileID: 0}
+  myPlatform: {fileID: 1337282117}
   myShip: {fileID: 0}
   itemFx: {fileID: 255912306521268364, guid: efacb52ee71009a4dab3b57f06881d3f, type: 3}
 --- !u!4 &1428427407
@@ -12245,7 +12269,7 @@ MonoBehaviour:
   - {fileID: 62402567}
   - {fileID: 2073289088}
   gameController: {fileID: 1160890316}
-  myPlatform: {fileID: 0}
+  myPlatform: {fileID: 26072442}
   myShip: {fileID: 0}
   itemFx: {fileID: 255912306521268364, guid: efacb52ee71009a4dab3b57f06881d3f, type: 3}
 --- !u!54 &1525151488
@@ -23004,7 +23028,7 @@ MonoBehaviour:
   - {fileID: 1428427404}
   - {fileID: 62402567}
   gameController: {fileID: 1160890316}
-  myPlatform: {fileID: 0}
+  myPlatform: {fileID: 400080628}
   myShip: {fileID: 0}
   itemFx: {fileID: 255912306521268364, guid: efacb52ee71009a4dab3b57f06881d3f, type: 3}
 --- !u!4 &2073289091

@@ -71,6 +71,12 @@ public class Player : MonoBehaviour
             Magic.Pooling.PoolManager.Spawn(itemFx, c.transform.position, Quaternion.identity, "itemFx");
             Magic.Pooling.PoolManager.DeSpawn(c.gameObject, "ores");
         }
+
+        if (c.tag == "Platform" && ores > 0 && c.gameObject == myPlatform)
+        {
+            ores = 0;
+            Magic.Pooling.PoolManager.Spawn(itemFx, transform.position, Quaternion.identity, "itemFx");
+        }
     }
 
     private void PlayerKnockdown()
