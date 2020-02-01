@@ -198,7 +198,7 @@ Transform:
   - {fileID: 152279681}
   - {fileID: 2096944756}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!1001 &152279679
 PrefabInstance:
@@ -5367,7 +5367,7 @@ Terrain:
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_DrawHeightmap: 1
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
@@ -5396,7 +5396,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &433179481
 MonoBehaviour:
@@ -5750,12 +5750,64 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0.34934574, y: 0.6133956, z: -0.34704247, w: 0.61746657}
-  m_LocalPosition: {x: 60.5, y: 73.4, z: 98.79562}
+  m_LocalPosition: {x: 60.5, y: 73.4, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 59, y: 89.621, z: 0}
+--- !u!1 &550335062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 550335063}
+  - component: {fileID: 550335064}
+  m_Layer: 0
+  m_Name: MeteoriteSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &550335063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550335062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 100, y: 25, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550335064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550335062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0a9ba033f25a2449db1d7ae7d97516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meteoritePrefab: {fileID: 6357016509415797492, guid: f26950e8d82c3f04993788fc0b5aaec2,
+    type: 3}
+  upperSpawnMaxVariance: 35
+  lowerSpawnMaxVariance: 28
+  spawnHeight: 100
+  spawnTimer: 5
+  spawnTimerVariation: 0.25
+  spawnTimerReductionPerSecond: 0.05
+  spawnTimerMinimum: 3
 --- !u!1 &608474922
 GameObject:
   m_ObjectHideFlags: 0
@@ -5788,7 +5840,7 @@ Transform:
   - {fileID: 700546131}
   - {fileID: 2143649436}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &650989035
 PrefabInstance:
@@ -11832,7 +11884,7 @@ Transform:
   - {fileID: 1804467444}
   - {fileID: 232364835}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1354138482
 GameObject:
@@ -12040,7 +12092,7 @@ Transform:
   - {fileID: 178869524}
   - {fileID: 1354138484}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 315, z: 0}
 --- !u!1 &1505134566
 GameObject:
@@ -12152,7 +12204,7 @@ Transform:
   - {fileID: 470461448}
   - {fileID: 1231668875}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 225, z: 0}
 --- !u!114 &1525151487
 MonoBehaviour:
@@ -22956,7 +23008,7 @@ Transform:
   - {fileID: 650989037}
   - {fileID: 1827931832}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
 --- !u!1 &2096944754
 GameObject:

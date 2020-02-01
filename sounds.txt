@@ -1,0 +1,6 @@
+robot moviendose
+nave despegando
+meteorito chocando
+pickup de mineral
+fixear nave
+disparo de arma
