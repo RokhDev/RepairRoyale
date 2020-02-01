@@ -12,6 +12,7 @@ public class MeteoriteSpawner : MonoBehaviour
     public float spawnTimerVariation;
     public float spawnTimerReductionPerSecond;
     public float spawnTimerMinimum;
+    public float firstSpawnDelay;
 
     private float despawnHeight;
     private float spawnCd;
@@ -19,7 +20,7 @@ public class MeteoriteSpawner : MonoBehaviour
     private void Start()
     {
         despawnHeight = transform.position.y;
-        spawnCd = spawnTimer;
+        spawnCd = firstSpawnDelay;
     }
 
     private void Update()

@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     public GameObject playerKnockdownGraphic;
     public GameObject[] otherPlayers;
     public GameController gameController;
+    public GameObject myPlatform;
+    public GameObject myShip;
+    public GameObject itemFx;
 
     private bool isKnockedDown = false;
     private float playerKnockdownCd = 0;
@@ -30,6 +33,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private Vector3 lastMovedDirection;
     bool moveDirectionChanged = false;
+    private int ores;
 
     private void Start()
     {
@@ -59,6 +63,16 @@ public class Player : MonoBehaviour
         PlayerMovement();
     }
 
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.tag == "Ore" && !isKnockedDown)
+        {
+            ores++;
+            Magic.Pooling.PoolManager.Spawn(itemFx, c.transform.position, Quaternion.identity, "itemFx");
+            Magic.Pooling.PoolManager.DeSpawn(c.gameObject, "ores");
+        }
+    }
+
     private void PlayerKnockdown()
     {
         if (playerKnockdownCd > 0)
@@ -72,7 +86,7 @@ public class Player : MonoBehaviour
         playerGraphic.SetActive(true);
     }
 
-    private void Knockdown()
+    public void Knockdown()
     {
         isKnockedDown = true;
         playerKnockdownCd = playerKnockdownDuration;

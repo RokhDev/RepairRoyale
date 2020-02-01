@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 62402568}
   m_Layer: 0
   m_Name: Player3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   moveRight: 275
   shoot: 305
   movementSpeed: 150
-  rotationSpeed: 500
+  rotationSpeed: 750
   playerWeaponParticles: {fileID: 152279682}
   playerWeaponCooldown: 3
   weaponRange: 15
@@ -184,6 +184,9 @@ MonoBehaviour:
   - {fileID: 1428427404}
   - {fileID: 2073289088}
   gameController: {fileID: 1160890316}
+  myPlatform: {fileID: 0}
+  myShip: {fileID: 0}
+  itemFx: {fileID: 255912306521268364, guid: efacb52ee71009a4dab3b57f06881d3f, type: 3}
 --- !u!4 &62402570
 Transform:
   m_ObjectHideFlags: 0
@@ -5801,13 +5804,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteoritePrefab: {fileID: 6357016509415797492, guid: f26950e8d82c3f04993788fc0b5aaec2,
     type: 3}
-  upperSpawnMaxVariance: 35
+  upperSpawnMaxVariance: 28
   lowerSpawnMaxVariance: 28
-  spawnHeight: 100
-  spawnTimer: 5
+  spawnHeight: 115
+  spawnTimer: 10
   spawnTimerVariation: 0.25
-  spawnTimerReductionPerSecond: 0.05
-  spawnTimerMinimum: 3
+  spawnTimerReductionPerSecond: 0.075
+  spawnTimerMinimum: 5
+  firstSpawnDelay: 5
 --- !u!1 &608474922
 GameObject:
   m_ObjectHideFlags: 0
@@ -12025,7 +12029,7 @@ GameObject:
   - component: {fileID: 1428427405}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12064,7 +12068,7 @@ MonoBehaviour:
   moveRight: 259
   shoot: 256
   movementSpeed: 150
-  rotationSpeed: 500
+  rotationSpeed: 750
   playerWeaponParticles: {fileID: 1040724012}
   playerWeaponCooldown: 3
   weaponRange: 15
@@ -12078,6 +12082,9 @@ MonoBehaviour:
   - {fileID: 62402567}
   - {fileID: 2073289088}
   gameController: {fileID: 1160890316}
+  myPlatform: {fileID: 0}
+  myShip: {fileID: 0}
+  itemFx: {fileID: 255912306521268364, guid: efacb52ee71009a4dab3b57f06881d3f, type: 3}
 --- !u!4 &1428427407
 Transform:
   m_ObjectHideFlags: 0
@@ -12185,7 +12192,7 @@ GameObject:
   - component: {fileID: 1525151488}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12224,7 +12231,7 @@ MonoBehaviour:
   moveRight: 100
   shoot: 306
   movementSpeed: 150
-  rotationSpeed: 500
+  rotationSpeed: 750
   playerWeaponParticles: {fileID: 28557969}
   playerWeaponCooldown: 3
   weaponRange: 15
@@ -12238,6 +12245,9 @@ MonoBehaviour:
   - {fileID: 62402567}
   - {fileID: 2073289088}
   gameController: {fileID: 1160890316}
+  myPlatform: {fileID: 0}
+  myShip: {fileID: 0}
+  itemFx: {fileID: 255912306521268364, guid: efacb52ee71009a4dab3b57f06881d3f, type: 3}
 --- !u!54 &1525151488
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22941,7 +22951,7 @@ GameObject:
   - component: {fileID: 2073289089}
   m_Layer: 0
   m_Name: Player4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22980,7 +22990,7 @@ MonoBehaviour:
   moveRight: 108
   shoot: 32
   movementSpeed: 150
-  rotationSpeed: 500
+  rotationSpeed: 750
   playerWeaponParticles: {fileID: 650989038}
   playerWeaponCooldown: 3
   weaponRange: 15
@@ -22994,6 +23004,9 @@ MonoBehaviour:
   - {fileID: 1428427404}
   - {fileID: 62402567}
   gameController: {fileID: 1160890316}
+  myPlatform: {fileID: 0}
+  myShip: {fileID: 0}
+  itemFx: {fileID: 255912306521268364, guid: efacb52ee71009a4dab3b57f06881d3f, type: 3}
 --- !u!4 &2073289091
 Transform:
   m_ObjectHideFlags: 0

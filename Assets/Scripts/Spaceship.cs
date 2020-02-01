@@ -4,5 +4,17 @@ using UnityEngine;
 
 public class Spaceship : MonoBehaviour
 {
-    public GameObject belongsTo;
+    public ParticleSystem ps;
+
+    private bool hasTakenOff = false;
+
+    private void Update()
+    {
+        if (!hasTakenOff) { return; }
+    }
+
+    public void TakeOff ()
+    {
+        
+    }
 }

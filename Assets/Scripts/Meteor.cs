@@ -9,6 +9,8 @@ public class Meteor : MonoBehaviour
     public float speedVariation;
     public float knockdownRadius;
     public float knockbackRadius;
+    public float knockbackForce;
+    public GameObject orePrefab;
     public ParticleSystem particles;
     public GameObject explosionFx;
 
@@ -16,6 +18,21 @@ public class Meteor : MonoBehaviour
     private Vector3 target = Vector3.zero;
     private float trueSpeed;
     private float sizeVar;
+    private GameObject[] players;
+    private Rigidbody[] playerRbs;
+    private Player[] playerCms;
+
+    private void Start()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
+        playerRbs = new Rigidbody[players.Length];
+        playerCms = new Player[players.Length];
+        for (int i = 0; i < players.Length; i++)
+        {
+            playerRbs[i] = players[i].GetComponent<Rigidbody>();
+            playerCms[i] = players[i].GetComponent<Player>();
+        }
+    }
 
     void OnEnable()
     {
@@ -25,12 +42,12 @@ public class Meteor : MonoBehaviour
                                            transform.localScale.z + sizeVar);
         trueSpeed = baseSpeed + Random.Range(-speedVariation, speedVariation);
 
-        Color meteorColor = new Color(0.647f, Random.Range(0.313f, 0.647f), 0.313f, 0.01f);
+        Color meteorColor = new Color(0.647f, Random.Range(0.313f, 0.647f), 0.313f, 0.0f);
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.material.color = meteorColor;
         
         ParticleSystem.MainModule particleSettings = particles.main;
-        particleSettings.startColor = new ParticleSystem.MinMaxGradient(meteorColor);
+        particleSettings.startColor = new ParticleSystem.MinMaxGradient(new Color(meteorColor.r, meteorColor.g, meteorColor.b, 1.0f));
 
         knockbackRadius += sizeVar;
         knockdownRadius += sizeVar;
@@ -38,6 +55,14 @@ public class Meteor : MonoBehaviour
     
     void Update()
     {
+        if (meshRenderer.material.color.a < 1.0f)
+        {
+            meshRenderer.material.color = new Color(meshRenderer.material.color.r,
+                                                    meshRenderer.material.color.g,
+                                                    meshRenderer.material.color.b,
+                                                    meshRenderer.material.color.a + 1 * Time.deltaTime);
+        }
+
         transform.position = Vector3.MoveTowards(transform.position, target, trueSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, target) < 0.01f)
@@ -52,6 +77,23 @@ public class Meteor : MonoBehaviour
         {
             Magic.Pooling.PoolManager.Spawn(explosionFx, transform.position, Quaternion.identity, "explosionFx");
         }
+
+        Magic.Pooling.PoolManager.Spawn(orePrefab, transform.position, Quaternion.identity, "ores");
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            float distance = Vector3.Distance(players[i].transform.position, transform.position);
+            if (distance <= knockdownRadius)
+            {
+                playerCms[i].Knockdown();
+            }
+            else if (distance <= knockbackRadius)
+            {
+                Vector3 tgtDirection = (players[i].transform.position - transform.position).normalized;
+                playerRbs[i].AddForce(tgtDirection * knockbackForce, ForceMode.VelocityChange);
+            }
+        }
+
         Magic.Pooling.PoolManager.DeSpawn(gameObject, "meteorites");
     }
 
