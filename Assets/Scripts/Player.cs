@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     public FloatingText myText;
     public GameObject itemFx;
     public Sprite winTexture;
+    public AudioSource weaponAudio;
+    public AudioSource weaponReloadAudio;
+    public AudioSource pickupAudio;
 
     private bool isKnockedDown = false;
     private float playerKnockdownCd = 0;
@@ -42,6 +45,7 @@ public class Player : MonoBehaviour
     private MeshRenderer gunRenderer;
     private Color gunColor;
     private bool gunColorReset = true;
+    private AudioSource movementAudio;
 
     private void Start()
     {
@@ -49,6 +53,7 @@ public class Player : MonoBehaviour
         gunRenderer = playerGunGraphic.GetComponent<MeshRenderer>();
         gunColor = gunRenderer.material.color;
         yPos = transform.position.y;
+        movementAudio = GetComponent<AudioSource>();
     }
     
     private void Update()
@@ -81,6 +86,7 @@ public class Player : MonoBehaviour
             Magic.Pooling.PoolManager.Spawn(itemFx, c.transform.position, Quaternion.identity, "itemFx");
             Magic.Pooling.PoolManager.DeSpawn(c.gameObject, "ores");
             myOreText.SetText(ores);
+            pickupAudio.Play();
         }
 
         if (c.tag == "Platform" && ores > 0 && c.gameObject == myPlatform)
@@ -90,6 +96,7 @@ public class Player : MonoBehaviour
             ores = 0;
             Magic.Pooling.PoolManager.Spawn(itemFx, transform.position, Quaternion.identity, "itemFx");
             myOreText.SetText(ores);
+            c.gameObject.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -121,6 +128,10 @@ public class Player : MonoBehaviour
         if (playerWeaponCd > 0)
         {
             playerWeaponCd -= Time.deltaTime;
+            if (playerWeaponCd <= 0)
+            {
+                weaponReloadAudio.Play();
+            }
             return;
         }
 
@@ -137,6 +148,8 @@ public class Player : MonoBehaviour
             if (playerWeaponParticles)
             {
                 playerWeaponParticles.Play();
+                weaponAudio.Play();
+                if (weaponReloadAudio.isPlaying) { weaponReloadAudio.Stop(); }
             }
 
             foreach (GameObject go in otherPlayers)
@@ -145,6 +158,8 @@ public class Player : MonoBehaviour
                 float angle = Vector3.Angle(transform.forward, tgtDirection);
                 if (Vector3.Distance(transform.position, go.transform.position) < weaponRange && angle <= weaponAngle)
                 {
+                    Player playerHandler = go.GetComponent<Player>();
+                    if (playerHandler.isKnockedDown) { tgtDirection = Vector3.zero; }
                     Rigidbody tgtRb = go.GetComponent<Rigidbody>();
                     tgtRb.AddForce(tgtDirection * weaponForce, ForceMode.VelocityChange);
                 }
@@ -183,6 +198,11 @@ public class Player : MonoBehaviour
             moveDirectionChanged = false;
             Quaternion lookDir = Quaternion.LookRotation(lastMovedDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, lookDir, rotationSpeed * Time.fixedDeltaTime);
+            if (movementAudio.mute) { movementAudio.mute = false; }
+        }
+        else
+        {
+            if (!movementAudio.mute) { movementAudio.mute = true; }
         }
         rb.AddForce(movementVector * movementSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         transform.position = new Vector3(transform.position.x, yPos, transform.position.z);

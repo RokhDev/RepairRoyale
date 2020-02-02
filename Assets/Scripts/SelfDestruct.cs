@@ -9,10 +9,12 @@ public class SelfDestruct : MonoBehaviour
 
     private float destroyCd;
     private ParticleSystem ps;
+    private AudioSource myAudio;
 
     public void Start()
     {
         ps = GetComponent<ParticleSystem>();
+        myAudio = GetComponent<AudioSource>();
     }
 
     public void OnEnable()
@@ -21,6 +23,10 @@ public class SelfDestruct : MonoBehaviour
         if (ps)
         {
             ps.Play();
+        }
+        if (myAudio)
+        {
+            myAudio.Play();
         }
     }
 

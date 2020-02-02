@@ -91,17 +91,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02772bcb078ee3498c9e46d023165bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeVariation: 1
+  sizeVariation: 1.25
   baseSpeed: 15
   speedVariation: 2.5
   knockdownRadius: 7
   knockbackRadius: 14
   knockbackForce: 75
+  originalSize: {x: 4.75, y: 4.75, z: 4.75}
   orePrefab: {fileID: 5436783106853820696, guid: 885c4ef7c5e6d144da7272a7c69c4c84,
     type: 3}
   particles: {fileID: 6357016510853335824}
   explosionFx: {fileID: 255912306521268364, guid: bb3a4e3408ff69a40956c77a64a565d6,
     type: 3}
+  explosionAudio: {fileID: 8300000, guid: 097c6043b3fd22145a35e1d3f0c3641c, type: 3}
 --- !u!1 &6357016510853335829
 GameObject:
   m_ObjectHideFlags: 0

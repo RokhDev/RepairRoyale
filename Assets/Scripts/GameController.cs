@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     private Dictionary<Player, int> playerResources = new Dictionary<Player, int>();
     private bool gameOver = false;
     private float sceneChangeCounter;
+    private AudioSource takeoff;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class GameController : MonoBehaviour
         }
         sceneChangeCounter = sceneChangeTime;
         winGraphic = null;
+        takeoff = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -60,5 +62,6 @@ public class GameController : MonoBehaviour
             p.GameOver(winner);
         }
         gameOver = true;
+        takeoff.Play();
     }
 }

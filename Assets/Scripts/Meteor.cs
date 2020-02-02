@@ -10,6 +10,7 @@ public class Meteor : MonoBehaviour
     public float knockdownRadius;
     public float knockbackRadius;
     public float knockbackForce;
+    public Vector3 originalSize;
     public GameObject orePrefab;
     public ParticleSystem particles;
     public GameObject explosionFx;
@@ -36,6 +37,7 @@ public class Meteor : MonoBehaviour
 
     void OnEnable()
     {
+        transform.localScale = originalSize;
         sizeVar = Random.Range(-sizeVariation, sizeVariation);
         transform.localScale = new Vector3(transform.localScale.x + sizeVar,
                                            transform.localScale.y + sizeVar,
