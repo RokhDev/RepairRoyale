@@ -22,6 +22,14 @@ public class Meteor : MonoBehaviour
     private GameObject[] players;
     private Rigidbody[] playerRbs;
     private Player[] playerCms;
+    private float originalKnockbackRadius;
+    private float originalKnockdownRadius;
+
+    private void Awake()
+    {
+        originalKnockbackRadius = knockbackRadius;
+        originalKnockdownRadius = knockdownRadius;
+    }
 
     private void Start()
     {
@@ -51,8 +59,8 @@ public class Meteor : MonoBehaviour
         ParticleSystem.MainModule particleSettings = particles.main;
         particleSettings.startColor = new ParticleSystem.MinMaxGradient(new Color(meteorColor.r, meteorColor.g, meteorColor.b, 1.0f));
 
-        knockbackRadius += sizeVar;
-        knockdownRadius += sizeVar;
+        knockbackRadius = originalKnockbackRadius + sizeVar;
+        knockdownRadius = originalKnockdownRadius + sizeVar;
     }
     
     void Update()
