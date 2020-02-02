@@ -19,11 +19,15 @@ public class Player : MonoBehaviour
     public float playerKnockdownDuration;
     public GameObject playerGraphic;
     public GameObject playerKnockdownGraphic;
+    public GameObject playerGunGraphic;
     public GameObject[] otherPlayers;
     public GameController gameController;
     public GameObject myPlatform;
     public GameObject myShip;
+    public PlayerOreText myOreText;
+    public FloatingText myText;
     public GameObject itemFx;
+    public Sprite winTexture;
 
     private bool isKnockedDown = false;
     private float playerKnockdownCd = 0;
@@ -34,10 +38,16 @@ public class Player : MonoBehaviour
     private Vector3 lastMovedDirection;
     bool moveDirectionChanged = false;
     private int ores;
+    private bool iWon = false;
+    private MeshRenderer gunRenderer;
+    private Color gunColor;
+    private bool gunColorReset = true;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gunRenderer = playerGunGraphic.GetComponent<MeshRenderer>();
+        gunColor = gunRenderer.material.color;
         yPos = transform.position.y;
     }
     
@@ -70,12 +80,16 @@ public class Player : MonoBehaviour
             ores++;
             Magic.Pooling.PoolManager.Spawn(itemFx, c.transform.position, Quaternion.identity, "itemFx");
             Magic.Pooling.PoolManager.DeSpawn(c.gameObject, "ores");
+            myOreText.SetText(ores);
         }
 
         if (c.tag == "Platform" && ores > 0 && c.gameObject == myPlatform)
         {
+            gameController.RepairShip(this, ores);
+            myText.SetText(ores);
             ores = 0;
             Magic.Pooling.PoolManager.Spawn(itemFx, transform.position, Quaternion.identity, "itemFx");
+            myOreText.SetText(ores);
         }
     }
 
@@ -94,6 +108,8 @@ public class Player : MonoBehaviour
 
     public void Knockdown()
     {
+        if (iWon) { return; }
+
         isKnockedDown = true;
         playerKnockdownCd = playerKnockdownDuration;
         playerKnockdownGraphic.SetActive(true);
@@ -108,9 +124,16 @@ public class Player : MonoBehaviour
             return;
         }
 
+        if (!gunColorReset)
+        {
+            gunRenderer.material.color = gunColor;
+        }
+
         if (Input.GetKeyDown(shoot))
         {
             playerWeaponCd = playerWeaponCooldown;
+            gunColorReset = false;
+            gunRenderer.material.color = new Color(1, 0.8f, 0.0f);
             if (playerWeaponParticles)
             {
                 playerWeaponParticles.Play();
@@ -163,5 +186,19 @@ public class Player : MonoBehaviour
         }
         rb.AddForce(movementVector * movementSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
         transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
+    }
+
+    public void GameOver(Player winner)
+    {
+        gameOver = true;
+
+        if (winner == this)
+        {
+            iWon = true;
+            myShip.GetComponent<Spaceship>().TakeOff();
+            playerGraphic.SetActive(false);
+            playerKnockdownGraphic.SetActive(false);
+            GameController.winGraphic = winTexture;
+        }
     }
 }
